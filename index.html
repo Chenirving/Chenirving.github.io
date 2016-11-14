@@ -238,8 +238,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/14/初识Angular-js1/" itemprop="url">
-                  初识Angular.js1
+                <a class="post-title-link" href="/2016/11/14/初识Angular-js(1)/" itemprop="url">
+                  初识Angular.js(1)
                 </a>
               
             
@@ -288,7 +288,7 @@
 <li>有了它，不需要直接去操作DOM，只需要在DOM注上metadata(即AngularJS里的directive们)，然后Angular会帮你操作DOM</li>
 <li>同时Angular不依赖（也不妨碍）任何其他的框架，甚至可以基于其他的框架开发Angular应用。<h1 id="那我们应该在什么时候用Angular？"><a href="#那我们应该在什么时候用Angular？" class="headerlink" title="那我们应该在什么时候用Angular？"></a>那我们应该在什么时候用Angular？</h1>Angular.js适合用来开发客户端的但页面应用。它不是个功能库，而是用来开发动态网页的框架。它专注于扩展HTML的功能，提供动态数据绑定（data binding），而且它能跟其它框架（如jQuery）合作融洽。<h2 id="什么是单页面应用"><a href="#什么是单页面应用" class="headerlink" title="什么是单页面应用"></a>什么是单页面应用</h2>所谓单页应用，指的是在一个页面上集成多种功能，甚至整个系统就只有一个页面，所有的业务功能都是它的子模块，通过特定的方式挂接到主界面上。它是AJAX技术的进一步升华，把AJAX的无刷新机制发挥到极致，因此能造就与桌面程序媲美的流畅用户体验。</li>
 </ol>
-<p>#如何使用Angular<br>让我们来看一个能用AngularJS开发的最简单的应用：</p>
+<h1 id="如何使用Angular"><a href="#如何使用Angular" class="headerlink" title="如何使用Angular"></a>如何使用Angular</h1><p>让我们来看一个能用AngularJS开发的最简单的应用：</p>
 <h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html ng-app&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;script src=&quot;http://code.angularjs.org/1.6.0-rc.0/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    Your name: &lt;input type=&quot;text&quot; ng-model=&quot;yourname&quot; placeholder=&quot;World&quot;&gt;</div><div class="line">    &lt;hr&gt;</div><div class="line">    Hello &#123;&#123;yourname || &apos;World&apos;&#125;&#125;!</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>我们在应用里到底做了什么？</p>
 <ul>
