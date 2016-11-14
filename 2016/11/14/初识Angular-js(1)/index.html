@@ -98,7 +98,7 @@
 重新定义了前端应用的开发方式。面对HTML和JavaScript之间的界线，它非但不畏缩不前，反而正面出击，提出了有效的解决方案。
 有了它，不需要直接去操作DOM，只需要在DOM注上metadata(即AngularJS里的directive们)，然后Angular会帮你操作DOM
 同时Angular不依赖（也不妨碍）任何其他的框架，甚至可以">
-<meta property="og:updated_time" content="2016-11-14T10:31:18.019Z">
+<meta property="og:updated_time" content="2016-11-14T12:13:57.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Angular.js(1)">
 <meta name="twitter:description" content="初识Angular.jsAngular.js是什么？
@@ -300,8 +300,10 @@
 <ul>
 <li>ng-app</li>
 <li>ng-model=“yourName”</li>
-<li>&#123;&#123; yourName &#125;&#125;<br>-<br>首先，我们写上了最重要（也是最容易被忘记）的部分：<html>元素的ng-app属性。少了这个属性，AngularJS就没法开始工作。</html></li>
+<li>&#123;&#123; yourName &#125;&#125;</li>
 </ul>
+<a id="more"></a>
+<p>首先，我们写上了最重要（也是最容易被忘记）的部分：<html>元素的ng-app属性。少了这个属性，AngularJS就没法开始工作。</html></p>
 <p>其次，我们告诉AngularJS，对页面上的“yourName” 这个Model进行双向数据绑定。</p>
 <p>第三，我们告诉AngularJS，在“&#123;&#123; yourName &#125;&#125;”这个指令模版上显示“yourName”这个Model的数据。</p>
 <h2 id="angular-module"><a href="#angular-module" class="headerlink" title="angular.module"></a>angular.module</h2><p>要定义一个AngularJS应用，我们先得定义一个AngularJS模块（angular.module）。所谓AngularJS模块，其实就是一系列函数的集合，当应用被启动时，这些函数就会被执行</p>

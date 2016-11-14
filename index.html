@@ -281,8 +281,7 @@
 
       
         
-          
-            <h1 id="初识Angular-js"><a href="#初识Angular-js" class="headerlink" title="初识Angular.js"></a>初识Angular.js</h1><p>Angular.js是什么？</p>
+          <h1 id="初识Angular-js"><a href="#初识Angular-js" class="headerlink" title="初识Angular.js"></a>初识Angular.js</h1><p>Angular.js是什么？</p>
 <ol>
 <li>重新定义了前端应用的开发方式。面对HTML和JavaScript之间的界线，它非但不畏缩不前，反而正面出击，提出了有效的解决方案。</li>
 <li>有了它，不需要直接去操作DOM，只需要在DOM注上metadata(即AngularJS里的directive们)，然后Angular会帮你操作DOM</li>
@@ -294,44 +293,13 @@
 <ul>
 <li>ng-app</li>
 <li>ng-model=“yourName”</li>
-<li>&#123;&#123; yourName &#125;&#125;<br>-<br>首先，我们写上了最重要（也是最容易被忘记）的部分：<html>元素的ng-app属性。少了这个属性，AngularJS就没法开始工作。</html></li>
+<li>&#123;&#123; yourName &#125;&#125;</li>
 </ul>
-<p>其次，我们告诉AngularJS，对页面上的“yourName” 这个Model进行双向数据绑定。</p>
-<p>第三，我们告诉AngularJS，在“&#123;&#123; yourName &#125;&#125;”这个指令模版上显示“yourName”这个Model的数据。</p>
-<h2 id="angular-module"><a href="#angular-module" class="headerlink" title="angular.module"></a>angular.module</h2><p>要定义一个AngularJS应用，我们先得定义一个AngularJS模块（angular.module）。所谓AngularJS模块，其实就是一系列函数的集合，当应用被启动时，这些函数就会被执行</p>
-<p>html:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html ng-app=&quot;myapp&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;script src=&quot;http://code.angularjs.org/1.6.0-rc.0/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>js:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(&apos;myapp&apos;,[]);</div></pre></td></tr></table></figure></p>
-<p>用这段代码我们就创建了一个名为myapp的angularjs模块。</p>
-<p>现在我们要实例化这个模块，并告诉angularjs，我们的应用在DOM结构的哪一部分。在页面上 实例化一个模块我们用ng-app这个指令，它的存在告诉Angularjs，我们的模块是哪一部分的DOM结构。</p>
-<p>传入我们应用的名字作为ng-app指令的值，我们就可以在index.html页面上实例化我们的应用（模块）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;html ng-app=&quot;myApp&quot;&gt;</div></pre></td></tr></table></figure>
-<p>我们可以把ng-app设在任何DOM元素上，然后该元素就会成为Angularjs启动应用的地方，通过这个就可以在页面某个需要用Angular的地方使用它</p>
-<h2 id="scope"><a href="#scope" class="headerlink" title="$scope"></a>$scope</h2><ul>
-<li>$scope是一个把view（DOM元素）连接到controller上的对象。</li>
-<li>在MVC结构里这个$scope就像M层（model），实际上它就是一个javascript对象，controller和view都恶意访问它，我们可以利用它在两者之间传递信息，在这个$scope对象里，我们既储存数据，又储存即将运行在view上的函数</li>
-</ul>
-<h3 id="rootScope"><a href="#rootScope" class="headerlink" title="$rootScope"></a>$rootScope</h3><ul>
-<li>每一个Angular应用都有一个$rootscope。这个是最顶层的scope，它对应拥有ng-app的那个DOM元素</li>
-<li>如果页面上没有明确指定$scope，Angular就会把数据和函数都绑定到拥有ng-app的那个DOM元素</li>
-</ul>
-<p>JS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var app = angular.module(&apos;myapp&apos;,[]);</div><div class="line">app.run(function($rootScope) &#123;</div><div class="line">  $rootScope.name = &quot;Irving&quot;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>现在我们可以在view的任何地方访问这个name属性，使用模版表达式&amp;#123&amp;#123&amp;#125&amp;#125。</p>
-<p>HTML:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; name &#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>显示：Irving</p>
-<h3 id="ng-controller"><a href="#ng-controller" class="headerlink" title="ng-controller"></a>ng-controller</h3><p>要明确创建一个$scope对象，我们就要给DOM元素岸上一个controller对象，用的是ng-controller指令属性:<br>HTML:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=&quot;MyController&quot;&gt;</div><div class="line">  &#123;&#123; person.name &#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>app-controller指令给所在DOM元素创建了一个新的$scope对象，并将这个对象包含进外层DOM元素的$scope里面（$rootScope）。现在，MyController给我们建立了一个可以从DOM元素内部直接访问的$scope对象,我们在这个$scope里创建一个person对象.</p>
-<p>JS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.controller(&apos;MyController&apos;, function($scope) &#123;</div><div class="line">    $scope.person = &#123;</div><div class="line">        name: &quot;Chen irving&quot;</div><div class="line">    &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>现在，我们可以在有ng-controller=’MyController’属性的DOM元素的任何子元素里访问这个person对象。</p>
-<h3 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h3><ul>
-<li>所有scope都遵循原型继承（prototypal inheritance），这意味着它们都能访问父scope们。对任何属性和方法，如果AngularJS在当前scope上找不到，就会到父scope上去找，如果在父scope上也没找到，就会继续向上回溯，一直到$rootScope 上。</li>
-<li>有些指令属性可以选择性地创建一个独立的scope，让这个scope不继承它的父scope们。</li>
-</ul>
-<p>假设我们有一个ParentController ，含有一个person 对象，又有一个ChildController 想要访问这个对象</p>
-<p>JS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.controller(&apos;ParentController&apos;, function($scope) &#123;</div><div class="line">  $scope.person = &#123;greeted: false&#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.controller(&apos;ChildController&apos;, function($scope) &#123;</div><div class="line">  $scope.sayHello = function() &#123;</div><div class="line">    $scope.person.greeted = true;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>我们在view里把ChileController绑定到PersonController下，在子元素里就可以访问Personcontroller创建的父$scope属性。<br>HTML:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=&quot;ParentController&quot;&gt;</div><div class="line">  &lt;div ng-controller=&quot;ChildController&quot;&gt;</div><div class="line">    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; placeholder=&quot;Name&quot;&gt;&lt;/input&gt;</div><div class="line">    &lt;a ng-click=&quot;sayHello()&quot;&gt;Say hello&lt;/a&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &#123;&#123; person &#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/14/初识Angular-js(1)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -422,8 +390,7 @@
 
       
         
-          
-            <h1 id="系统必要环境："><a href="#系统必要环境：" class="headerlink" title="系统必要环境："></a>系统必要环境：</h1><p>要想使用hexo搭建博客，需要在你的系统中支持Node.js和git</p>
+          <h1 id="系统必要环境："><a href="#系统必要环境：" class="headerlink" title="系统必要环境："></a>系统必要环境：</h1><p>要想使用hexo搭建博客，需要在你的系统中支持Node.js和git</p>
 <h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><pre><code>$ cd d:/hexo
 $ npm install hexo-cli -g
 </code></pre><h1 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h1><pre><code>$ hexo init blog（创建博客）
@@ -442,28 +409,12 @@ $ hexo s == hexo server
 $ hexo d == hexo deploy
 </code></pre><h2 id="常用组合"><a href="#常用组合" class="headerlink" title="常用组合"></a>常用组合</h2><pre><code>$ hexo d -g #生成部署
 $ hexo s -g #生成预览
-</code></pre><p>完成对hexo的初始化后，执行 $ hexo s -g,这样博客就可以在浏览器中看了（本地）,在浏览器中输入<a href="http://localhost://4000" target="_blank" rel="external">http://localhost://4000</a>访问</p>
-<h1 id="配置githubpages"><a href="#配置githubpages" class="headerlink" title="配置githubpages"></a>配置githubpages</h1><p>我们创建的blog只是在本地的，我们通过githubpages来保存我们的博客，让别人也可以看到。（关于githubpages自己上网查找资料）</p>
-<ol>
-<li>创建一个github仓库，命名为username.github.io，注意:这个仓库的名字是固定的username就是你的github的用户名（前提是你有个github帐号）。</li>
-<li>进入到刚才创建的blog跟布鲁底下的博客配置文件_config.ylm</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>3.修改完后，你可能还要在你的github上添加SSh key.(这个在不同系统下不一样，自行谷歌百度)</p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save hexo-deploy-git</div></pre></td></tr></table></figure>
-<h1 id="最后部署到github上"><a href="#最后部署到github上" class="headerlink" title="最后部署到github上"></a>最后部署到github上</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo d -g</div></pre></td></tr></table></figure>
-<p>每次部署都执行就可以了</p>
-<h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>这样，我们在浏览器中输入username.github.io就可以浏览到我们刚才本地浏览的博客了,就不单单是本地。</p>
-<h1 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h1><p>hexo默认的主题感觉不怎么好看,在github上找到自己想要的主题，我这里用的是Next.(官网：<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a>，官网里有详细的使用方法)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd your-hexo-site</div><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>克隆到本地后，修改博客配置文件_config.ylm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure>
-<p>这样我们的主题就修改完成了</p>
-<p>然后部署上线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo d -g</div></pre></td></tr></table></figure>
-<p>这样就完成啦！！！</p>
-
-          
+</code></pre><p>完成对hexo的初始化后，执行 $ hexo s -g,这样博客就可以在浏览器中看了（本地）,在浏览器中输入<a href="http://localhost://4000">http://localhost://4000</a>访问</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/hexo搭建博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
