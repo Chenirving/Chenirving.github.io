@@ -323,19 +323,19 @@ $ hexo s -g #生成预览
 <li>创建一个github仓库，命名为username.github.io，注意:这个仓库的名字是固定的username就是你的github的用户名（前提是你有个github帐号）。</li>
 <li>进入到刚才创建的blog跟布鲁底下的博客配置文件_config.ylm</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Deployment</span></div><div class="line"><span class="meta">## Docs: https:<span class="comment">//hexo.io/docs/deployment.html</span></span></div><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> https:<span class="comment">//github.com/username/username.github.io.git</span></div></pre></td></tr></table></figure>
 <p>3.修改完后，你可能还要在你的github上添加SSh key.(这个在不同系统下不一样，自行谷歌百度)</p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save hexo-deploy-git</div></pre></td></tr></table></figure>
-<h1 id="最后部署到github上"><a href="#最后部署到github上" class="headerlink" title="最后部署到github上"></a>最后部署到github上</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo d -g</div></pre></td></tr></table></figure>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> <span class="comment">--save hexo-deploy-git</span></div></pre></td></tr></table></figure>
+<h1 id="最后部署到github上"><a href="#最后部署到github上" class="headerlink" title="最后部署到github上"></a>最后部署到github上</h1><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo clean</div><div class="line"><span class="variable">$ </span>hexo d -g</div></pre></td></tr></table></figure>
 <p>每次部署都执行就可以了</p>
 <h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>这样，我们在浏览器中输入username.github.io就可以浏览到我们刚才本地浏览的博客了,就不单单是本地。</p>
 <h1 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h1><p>hexo默认的主题感觉不怎么好看,在github上找到自己想要的主题，我这里用的是Next.(官网：<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a>，官网里有详细的使用方法)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd your-hexo-site</div><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cd</span> your-hexo-site</div><div class="line">$ git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iissnan/hexo-theme-<span class="keyword">next</span> themes/<span class="keyword">next</span></div></pre></td></tr></table></figure>
 <p>克隆到本地后，修改博客配置文件_config.ylm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Extensions</span></div><div class="line"><span class="meta">## Plugins: https:<span class="comment">//hexo.io/plugins/</span></span></div><div class="line"><span class="meta">## Themes: https:<span class="comment">//hexo.io/themes/</span></span></div><div class="line"><span class="symbol">theme:</span> next</div></pre></td></tr></table></figure>
 <p>这样我们的主题就修改完成了</p>
 <p>然后部署上线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo d -g</div></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo clean</div><div class="line"><span class="variable">$ </span>hexo d -g</div></pre></td></tr></table></figure>
 <p>这样就完成啦！！！</p>
 
       
@@ -372,8 +372,8 @@ $ hexo s -g #生成预览
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/14/初识Angular-js(1)/" rel="prev" title="初识Angular.js(1)">
-                初识Angular.js(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/10/JS判断数组是否有重复项/" rel="prev" title="JS判断数组是否有重复项">
+                JS判断数组是否有重复项 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -442,7 +442,7 @@ $ hexo s -g #生成预览
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,7 +452,7 @@ $ hexo s -g #生成预览
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

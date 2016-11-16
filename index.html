@@ -340,6 +340,300 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/20/JS中call-apply-bind那些事/" itemprop="url">
+                  JS中call,apply,bind那些事
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T21:09:12+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>改变函数执行时的上下文，<strong>再具体一点就是改变函数运行时的this指向</strong></p>
+<p>例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">    Person.prototype = &#123;</div><div class="line">        <span class="keyword">constructor</span>: Person,</div><div class="line">        showName: function()&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'irving'</span>);</div><div class="line">    person.showName();   <span class="comment">//  irving</span></div></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/20/JS中call-apply-bind那些事/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/14/JS的模块化/" itemprop="url">
+                  JS的模块化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T21:03:38+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="JavaScript的模块化"><a href="#JavaScript的模块化" class="headerlink" title="JavaScript的模块化"></a>JavaScript的模块化</h1><p>作为一名JS初学者。假如你听到了一些诸如“模块化构建&amp;模块化载入” “Webpack&amp;Browserify” 或者 “AMD&amp;CMD”之类的术语，肯定瞬间就凌乱了。</p>
+<h1 id="什么是模块化"><a href="#什么是模块化" class="headerlink" title="什么是模块化"></a>什么是模块化</h1><p>称职的作家会把他的书分章节和段落；好的程序员会把他的代码分成模块。</p>
+<p>就好像书籍的一章，模块仅仅是一坨代码而已。</p>
+<p>好的代码模块分割的内容一定是很合理的，便于你增加减少或者修改功能，同时又不会影响整个系统。</p>
+<h1 id="为什么要使用模块"><a href="#为什么要使用模块" class="headerlink" title="为什么要使用模块"></a>为什么要使用模块</h1><ol>
+<li>模块化可以使你的代码低耦合，功能模块直接不相互影响。</li>
+<li>可维护性：根据定义，每个模块都是独立的。良好设计的模块会尽量与外部的代码撇清关系，以便于独立对其进行改进和维护。维护一个独立的模块比起一团凌乱的代码来说要轻松很多。</li>
+<li>命名空间：在JavaScript中，最高级别的函数外定义的变量都是全局变量（这意味着所有人都可以访问到它们）。也正因如此，当一些无关的代码碰巧使用到同名变量的时候，我们就会遇到“命名空间污染”的问题。</li>
+<li>可复用性：现实来讲，在日常工作中我们经常会复制自己之前写过的代码到新项目中。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/14/JS的模块化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/10/JS判断数组是否有重复项/" itemprop="url">
+                  JS判断数组是否有重复项
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-10T20:00:34+08:00" content="2016-09-10">
+              2016-09-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Check</span>(<span class="params">arr</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//将数组转字符串保存至变量b中</span></div><div class="line">    <span class="keyword">var</span> b = arr.join(<span class="string">","</span>);</div><div class="line">    <span class="comment">//遍历字符串b</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; b.length; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//替换字符串b第一个与arr[i]匹配的字符为""并从头到尾地检索字符arr[i]，有重复项则返回true，否则返回false</span></div><div class="line">        <span class="keyword">if</span> (b.replace(arr[i],<span class="string">""</span>).indexOf(arr[i])&gt;<span class="number">-1</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/18/hexo搭建博客/" itemprop="url">
                   hexo搭建博客
                 </a>
@@ -469,7 +763,7 @@ $ hexo s # 或者hexo server，可以在http://localhost:4000/ 查看
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -479,7 +773,7 @@ $ hexo s # 或者hexo server，可以在http://localhost:4000/ 查看
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
