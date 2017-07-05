@@ -238,6 +238,206 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/18/初识Angular-js(3)/" itemprop="url">
+                  初识Angular.js(3)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-18T19:25:02+08:00" content="2016-11-18">
+              2016-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>#指令<br>指令就是指绑定在DOM元素上的函数，它可以调用方法，定义行为，绑定controller及$scope对象，操作DOM，等等等。</p>
+<p>当浏览器启动，开始解析HTML时，DOM元素上的指令就会跟着其他属性一样被解析。</p>
+<p>当一个Angular.js应用启动，Angular编译器就会遍历DOM树（从有ng-app指令的那个元素开始），解析HTML，寻找这些指令函数。当一个DOM元素上找到多个这样的指令函数，它们就会被收集起来、排序、然后按照优先级顺序被执行，每个指令都有优先级。</p>
+<h2 id="ng-model"><a href="#ng-model" class="headerlink" title="ng-model"></a>ng-model</h2><p>ng-model指令被用来将DOM文本输入框的值，跟controller里的$scope model绑定起来。具体就是在这个值上绑定一个$watch()函数，在使用时运行在Angular.js的事件循环里，让Angular.js能够对DOM进行对应的更新。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>这个双大括号指令，使用$watch()函数，给括号内的表达式注册了一个监听器，实现自动更新view。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/18/初识Angular-js(3)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/16/初识Angular-js(2)/" itemprop="url">
+                  初识Angular.js(2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T12:08:22+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h1><p>双向数据绑定，如果view改变了属性值，model就会“看到”这个改变，如果model改变了属性值，view也会“看到”,我们使用ng-moder指令属性</p>
+<p>HTML：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"MyController"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"Person.name"</span> <span class="attr">placeholder</span>=<span class="string">"Enter Your Name"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span> Hello </span><span class="template-variable">&#123;&#123;Person.name&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>JS:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app.controller(<span class="string">'MyController'</span>, <span class="function"><span class="keyword">function</span><span class="params">($scope)</span> </span>&#123;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>当文本输入时，下面的名字也会改变。</p>
+<p>我们也可以在我们的后台改变model，看这个变动自动在前端体现出来。我们在MyController的model里写一个延时函数，更新$scope上的一个数据。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/16/初识Angular-js(2)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/14/初识Angular-js(1)/" itemprop="url">
                   初识Angular.js(1)
                 </a>
@@ -585,7 +785,7 @@
       
         
           
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Check</span>(<span class="params">arr</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//将数组转字符串保存至变量b中</span></div><div class="line">    <span class="keyword">var</span> b = arr.join(<span class="string">","</span>);</div><div class="line">    <span class="comment">//遍历字符串b</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; b.length; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//替换字符串b第一个与arr[i]匹配的字符为""并从头到尾地检索字符arr[i]，有重复项则返回true，否则返回false</span></div><div class="line">        <span class="keyword">if</span> (b.replace(arr[i],<span class="string">""</span>).indexOf(arr[i])&gt;<span class="number">-1</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Check</span><span class="params">(arr)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//将数组转字符串保存至变量b中</span></div><div class="line">    <span class="keyword">var</span> b = arr.join(<span class="string">","</span>);</div><div class="line">    <span class="comment">//遍历字符串b</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; b.length; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//替换字符串b第一个与arr[i]匹配的字符为""并从头到尾地检索字符arr[i]，有重复项则返回true，否则返回false</span></div><div class="line">        <span class="keyword">if</span> (b.replace(arr[i],<span class="string">""</span>).indexOf(arr[i])&gt;<span class="number">-1</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           
         
       
@@ -763,7 +963,7 @@ $ hexo s # 或者hexo server，可以在http://localhost:4000/ 查看
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

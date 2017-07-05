@@ -1,0 +1,598 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="#指令指令就是指绑定在DOM元素上的函数，它可以调用方法，定义行为，绑定controller及$scope对象，操作DOM，等等等。
+当浏览器启动，开始解析HTML时，DOM元素上的指令就会跟着其他属性一样被解析。
+当一个Angular.js应用启动，Angular编译器就会遍历DOM树（从有ng-app指令的那个元素开始），解析HTML，寻找这些指令函数。当一个DOM元素上找到多个这样的指令函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Angular.js(3)">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/初识Angular-js(3)/index.html">
+<meta property="og:site_name" content="Irving">
+<meta property="og:description" content="#指令指令就是指绑定在DOM元素上的函数，它可以调用方法，定义行为，绑定controller及$scope对象，操作DOM，等等等。
+当浏览器启动，开始解析HTML时，DOM元素上的指令就会跟着其他属性一样被解析。
+当一个Angular.js应用启动，Angular编译器就会遍历DOM树（从有ng-app指令的那个元素开始），解析HTML，寻找这些指令函数。当一个DOM元素上找到多个这样的指令函数">
+<meta property="og:updated_time" content="2017-07-05T02:44:03.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Angular.js(3)">
+<meta name="twitter:description" content="#指令指令就是指绑定在DOM元素上的函数，它可以调用方法，定义行为，绑定controller及$scope对象，操作DOM，等等等。
+当浏览器启动，开始解析HTML时，DOM元素上的指令就会跟着其他属性一样被解析。
+当一个Angular.js应用启动，Angular编译器就会遍历DOM树（从有ng-app指令的那个元素开始），解析HTML，寻找这些指令函数。当一个DOM元素上找到多个这样的指令函数">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/18/初识Angular-js(3)/"/>
+
+  <title> 初识Angular.js(3) | Irving </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Irving</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Chen Irving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                初识Angular.js(3)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-18T19:25:02+08:00" content="2016-11-18">
+              2016-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#指令<br>指令就是指绑定在DOM元素上的函数，它可以调用方法，定义行为，绑定controller及$scope对象，操作DOM，等等等。</p>
+<p>当浏览器启动，开始解析HTML时，DOM元素上的指令就会跟着其他属性一样被解析。</p>
+<p>当一个Angular.js应用启动，Angular编译器就会遍历DOM树（从有ng-app指令的那个元素开始），解析HTML，寻找这些指令函数。当一个DOM元素上找到多个这样的指令函数，它们就会被收集起来、排序、然后按照优先级顺序被执行，每个指令都有优先级。</p>
+<h2 id="ng-model"><a href="#ng-model" class="headerlink" title="ng-model"></a>ng-model</h2><p>ng-model指令被用来将DOM文本输入框的值，跟controller里的$scope model绑定起来。具体就是在这个值上绑定一个$watch()函数，在使用时运行在Angular.js的事件循环里，让Angular.js能够对DOM进行对应的更新。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>这个双大括号指令，使用$watch()函数，给括号内的表达式注册了一个监听器，实现自动更新view。</p>
+<a id="more"></a>
+<h3 id="什么是表达式"><a href="#什么是表达式" class="headerlink" title="什么是表达式"></a>什么是表达式</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; <span class="number">8</span> + <span class="number">1</span> &#125;&#125; =&gt; <span class="number">9</span></div><div class="line">&#123;&#123; person &#125;&#125; =&gt; &#123;&amp;quot;name&amp;quot;:&amp;quot;Ari Lerner&amp;quot;&#125;</div></pre></td></tr></table></figure>
+<p>表达式会经过Angular.js的处理，从而拥有以下重要而独特的性质:</p>
+<ul>
+<li>所有表达式都在scope这个context里被执行，因此可以使用所有本地$scope中的变量。</li>
+<li>如果一个表达式的执行导致类型错误或引用错误，这些错误将不会被抛出。</li>
+<li>表达式里不允许任何控制函数行程的功能（如if/else等条件语句）</li>
+<li>表达式可接受一个或多个串联起来的过滤器。</li>
+</ul>
+<h2 id="ng-init"><a href="#ng-init" class="headerlink" title="ng-init"></a>ng-init</h2><p>ng-init指令属性是一个在启动时运行的函数（在程序进入运行阶段之前）。它让我们能够在程序运行前设定初始变量的值。<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">b</span> <span class="attr">ng-init</span>=<span class="string">'name = "Chen irving"'</span>&gt;</span>Hello, </span><span class="template-variable">&#123;&#123; name &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="ng-click"><a href="#ng-click" class="headerlink" title="ng-click"></a>ng-click</h2><p>ng-click指令属性给DOM元素注册了一个点击事件的监听器。当此DOM元素上有点击事件发生时，Angular.js就会执行表达式的内容，并相应地更新view。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">'counter = counter + 1'</span>&gt;</span>Add one<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们也可以用ng-click来调用在controoler里写好并绑定在$scope上的函数。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">"sayHello()"</span>&gt;</span>Say hello<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.controller(<span class="string">'MyController'</span>, <span class="function"><span class="keyword">function</span><span class="params">($scope)</span> </span>&#123;</div><div class="line">   $scope.sayHello = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">     alert(<span class="string">"hello!"</span>);</div><div class="line">   &#125;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<h2 id="ng-show和ng-hide"><a href="#ng-show和ng-hide" class="headerlink" title="ng-show和ng-hide"></a>ng-show和ng-hide</h2><p>ng-show和ng-hide指令，根据赋予它们的表达式的值的真假性(truthy)，来显示和隐藏它们所属的那一部分DOM。<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-init</span>=<span class="string">"shouldShow = true"</span> <span class="attr">ng-click</span>=<span class="string">"shouldShow = !shouldShow"</span>&gt;</span>Flip the shouldShow variable<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></div><div class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-show</span>=<span class="string">"shouldShow"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Showing <span class="template-variable">&#123;&#123; shouldShow &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-hide</span>=<span class="string">"shouldShow"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Hiding <span class="template-variable">&#123;&#123; shouldShow &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="ng-repeat"><a href="#ng-repeat" class="headerlink" title="ng-repeat"></a>ng-repeat</h2><p>ng-repeat指令遍历一个数据集合中的每个数据元素，加载HTML模版把数据渲染出来。被重复使用的模版元素，就是我们绑定了这个指令属性的DOM元素。每一个使用模版渲染的DOM元素都有自己的scope。</p>
+<p>假设我们的controller里有这样一个数据元素的数组：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$scope.roommates = [</div><div class="line">   &#123; name: <span class="string">'Ari'</span>&#125;,</div><div class="line">   &#123; name: <span class="string">'Q'</span>&#125;,</div><div class="line">   &#123; name: <span class="string">'Sean'</span>&#125;,</div><div class="line">   &#123; name: <span class="string">'Anand'</span>&#125;</div><div class="line"> ];</div></pre></td></tr></table></figure></p>
+<p>view:<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">"person in roommates"</span>&gt;</span><span class="template-variable">&#123;&#123; person.name &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>最后：</p>
+<ul>
+<li>Air</li>
+<li>Q</li>
+<li>sean</li>
+<li>Anand</li>
+</ul>
+<p>我们还可以用它遍历一个由成对的key-value数据组成的集合：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$scope</span><span class="selector-class">.people</span> = &#123;</div><div class="line">   <span class="string">'Ari'</span>: <span class="string">'orange'</span>,</div><div class="line">   <span class="string">'Q'</span>: <span class="string">'purple'</span>,</div><div class="line">   <span class="string">'Sean'</span>: <span class="string">'green'</span></div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>要遍历它，我们可以给ng-repeat指令属性赋予这个表达式: (key, value) in object:<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">"(name, color) in people"</span>&gt;</span> <span class="template-variable">&#123;&#123; name &#125;</span><span class="xml">&#125;'s favorite color is </span><span class="template-variable">&#123;&#123; color &#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line"> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/初识Angular-js(2)/" rel="next" title="初识Angular.js(2)">
+                <i class="fa fa-chevron-left"></i> 初识Angular.js(2)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oe7ah974b.bkt.clouddn.com/LOFTCam2015-06-04-23-58-15.jpg"
+               alt="Chen Irving" />
+          <p class="site-author-name" itemprop="name">Chen Irving</p>
+          <p class="site-description motion-element" itemprop="description">2B青年一枚 No暖男！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-model"><span class="nav-number">1.</span> <span class="nav-text">ng-model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是表达式"><span class="nav-number">2.1.</span> <span class="nav-text">什么是表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-init"><span class="nav-number">3.</span> <span class="nav-text">ng-init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-click"><span class="nav-number">4.</span> <span class="nav-text">ng-click</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-show和ng-hide"><span class="nav-number">5.</span> <span class="nav-text">ng-show和ng-hide</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-repeat"><span class="nav-number">6.</span> <span class="nav-text">ng-repeat</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Irving</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
